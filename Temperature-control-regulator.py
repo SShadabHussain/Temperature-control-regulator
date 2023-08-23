@@ -49,7 +49,7 @@ cmd_ctrl = ctrl.ControlSystem([rule1, rule2,rule3])
 cmd_output = ctrl.ControlSystemSimulation(cmd_ctrl)
 
 
-temperature_value = float(input("Enter temperature"))
+temperature_value = float(input("Enter temperature : "))
 
 while temperature_value < 0 or temperature_value > 70:
     try:
@@ -57,7 +57,7 @@ while temperature_value < 0 or temperature_value > 70:
     except ValueError:
         print('We expect you to enter a valid integer')
 
-humidity_value = float(input("Enter humidity"))
+humidity_value = float(input("Enter humidity : "))
 
 while humidity_value < 0 or humidity_value > 100:
     try:
@@ -74,12 +74,12 @@ cmd_output.compute()
 print("The working value thus obtained is : ")
 print(cmd_output.output['command'])
 if (cmd_output.output['command'] > 35):
-    print('Warm Up')
+    print('----------Warm Up----------')
 elif (cmd_output.output['command'] < 45 and cmd_output.output['command'] > 23):
-    print('No change')
+    print('----------No change----------')
 else:
-    print('Cool down')
+    print('----------Cool down----------')
 
-cmd.view(sim=cmd_output)
-temp.view()
-hum.view()
+cmd_view=cmd.view(sim=cmd_output)
+temp_view=temp.view()
+hum_view=hum.view()
